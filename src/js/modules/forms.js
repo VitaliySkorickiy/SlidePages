@@ -47,7 +47,7 @@ export default class Form {
       }
     };
 
-    function creaetMask(e) {
+    function createMask(e) {
 
       let matrix = '+1 (___) ___-____',
         i = 0,
@@ -77,9 +77,9 @@ export default class Form {
     let inputs = document.querySelectorAll('[name="phone"]');
 
     inputs.forEach(input => {
-      input.addEventListener('input', creaetMask);
-      input.addEventListener('focus', creaetMask);
-      input.addEventListener('blur', creaetMask);
+      input.addEventListener('input', createMask)
+      input.addEventListener('focus', createMask)
+      input.addEventListener('blur', createMask)
     });
 
   }
@@ -109,7 +109,10 @@ export default class Form {
           font-size: 18px;
           color: grey;
         `;
-        form.parentNode.appendChild(statusMessage);
+
+        document.querySelectorAll('input').forEach(input => {
+          input.value !== '' ? form.parentNode.appendChild(statusMessage) : null
+        })
 
         statusMessage.textContent = this.message.loading;
 
